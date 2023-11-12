@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/AddPost.css">
+</head>
+<body>
+    <div class="Container-AddPost">
+        <!-- <h1><%= data.userQuery %></h1> -->
+        <div class="Container-Mic-AddPost">
+            <h1>Adauga un post!</h1>
+            <form id="form-add-post" >
+                <!-- method="POST" action="/AddPost" -->
+                <div>Type:</div>
+                <div for="CategoryType" class="Category-Type">
+                    <% data.categories.map(result => { %>
+                        <!-- <div><input type="radio" required  name="Type" value="<%= result.name.toLowerCase() %>" ><%= result.name %> </input></div>  -->
+                        <div><input type="radio" required  name="Type" value="<%= result.name %>" ><%= result.name %> </input></div> 
+                   <% }) %>
+                </div>
+                
+                <div for="Title">
+                    <p>Title</p>
+                    <input type="text" class="Title" name="title" required autocomplete="off">
+                </div>
+                <div for="Price-per-room">
+                    <p>Pret/Camera:</p>
+                    <input type="text" class="Price" name="pricePerRoom" required autocomplete="off">
+                </div>
+                <div for="Price-whole-place">
+                    <p>Pret intreaga incapere:</p>
+                    <input type="text" class="Price-whole-place" name="priceWholePlace" required autocomplete="off">
+                </div>
+                <div for="Despre_Proprietate" id="Container_Despre_Proprietate">
+                    <p>Despre Proprietate</p>
+                    <input type="text" class="Despre_Proprietate" name="aboutProperty[]" required autocomplete="off">
+                    <a href="" id="adauga-linie-Despre-Proprietate">adauga inca o linie Despre Proprietate + </a>
+                </div>
+                <div for="Facilitati" id="Container_Facilitati">
+                    <p>Facilitati</p>
+                    <input type="text" class="Facilitati" name="facilities[]" required autocomplete="off">
+                    <a href="" id="adauga-linie-Facilitati">adauga inca o linie Facilitati + </a>
+                </div>
+                <div for="Servicii_Extra" id="Container_Servicii_Extra">
+                    <p>Servicii extra (Contra cost):</p>
+                    <input type="text" class="Servicii_Extra" name="extraServices[]" required autocomplete="off">
+                    <a href="" id="adauga-linie-Servicii-Extra">adauga inca o linie Servicii extra + </a>
+                </div>
+                <div for="Politica-Noastra" id="Container_Politica_Noastra">
+                    <p>Regulile gazdei:</p>
+                    <input type="text" class="Politica-Noastra" name="rules[]" required autocomplete="off">
+                    <a href="" id="adauga-linie-Politica-Noastra">adauga inca o regula + </a>
+                </div>
+                <div for="Image">
+                    <p>Image url:</p>
+                    <input type="text" class="Image" name="image" autocomplete="off">
+                </div>
+                <div for="Phone-Number">
+                    <p>Phone number:</p>
+                    <input type="text" class="Phone-Number" name="phoneNumber" autocomplete="off">
+                </div>
+                <div for="Email">
+                    <p>Email:</p>
+                    <input type="text" class="Email" name="email" autocomplete="off">
+                </div>
+                <div for="StartDate">
+                    <p>Start-Date</p>
+                    <input type="date" class="StartDate" name="startDate" required>
+                </div>
+                <div for="EndDate">
+                    <p>End-Date</p>
+                    <input type="date" class="EndDate" name="endDate" required>
+                </div>
+                <div for="check-in-hour">
+                    <p>check in hour:</p>
+                    <input type="text" class="check-in-hour" name="checkInHour" required>
+                </div>
+                <div for="check-out-hour">
+                    <p>check out hours:</p>
+                    <input type="text" class="check-out-hour" name="checkOutHour" required>
+                </div>
+                <div for="Descriere">
+                    <p>Descriere:</p>
+                    <textarea id="Descriere" name="Description" required autocomplete="off"></textarea>
+                </div>
+                
+                <button id="sendPost" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    <script src="javascript/addPost.js"></script>
+</body>
+</html>

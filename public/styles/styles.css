@@ -1,0 +1,346 @@
+*, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/*NavBar*/
+.nav-bar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(255, 255, 255);
+    /* border-bottom: 1px solid rgb(255, 115, 0); */
+    /* border-bottom: 1px solid black; */
+    box-shadow: 0 0 5px 0 black;
+}
+
+.Container-Links{
+    padding-right: 125px;
+}
+
+.Container-Links a{
+    text-decoration: none;
+    color: white;
+    padding: 15px 25px;
+    background-color: rgb(255, 115, 0);
+    text-transform: uppercase;
+    font-weight: 600;
+    border-radius: 15px;
+    margin-left: 30px;
+}
+
+.side-bar{
+
+
+
+    z-index: 10;
+    display: none;
+}
+
+.bars{
+    display: none;
+}
+
+.Container-Logo{
+    display: inline-block;
+    padding-left: 125px;
+}
+
+.Container-Logo img{
+    display: block;
+    padding: 10px 10px 0px 0 ;
+    height: 100%;
+}
+
+/*Rest of the page*/
+.Container-Home{
+    overflow: hidden;
+}
+
+.Descriere-Aplicatie{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    padding: 20px;
+    background: linear-gradient(rgba(18, 19, 112, 0.325), rgba(186, 182, 202, 0.5)), url(../img/cover1.jpg);
+    /* background: linear-gradient(rgba(42, 45, 49, 0.325), rgba(10, 1, 39, 0.5)), url(../img/poster1.jpg) no-repeat center center ;
+    background-size: cover; */
+    /* background-color: black; */
+
+}
+
+.Descriere-Aplicatie-Text{
+    /* color: white; */
+    
+    min-height: 200px; /*!!! de scos linia asta dupa ce termin !!!*/
+}
+
+.Descriere-Aplicatie-Text p{
+    font-size: 2.5rem;
+    letter-spacing: -2px;
+    font-weight: 800;
+    padding: 5px 0;
+    color: white;
+}
+
+.posts-and-categories{
+    display: flex;
+    margin-top: 30px;
+}
+
+.last-3-posts{
+    display: flex;
+    /* flex-wrap: wrap; */
+}
+.post{
+    width: 20vw;
+    margin: 10px;
+}
+
+.post > a{
+    text-decoration: none;
+    color: black;
+}
+
+.post img{
+    width: 100%;
+    border-radius: 10px;
+    aspect-ratio: 3/2;
+    object-fit: cover;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 5px;
+    min-height: 200px;
+}
+
+.content .fist-line{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.content .title{
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: black;
+}
+
+
+.content .text{
+    color: grey;
+    margin-top: 10px;
+    line-height: 1.25rem;
+
+    
+    max-height: 200px;
+    overflow: hidden;
+}
+
+.content .adress{
+    margin-top: 5px;
+}
+
+.content .flex-1{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.content .date{
+   
+}
+
+.Button-Div{
+    margin: 30px 0px;
+}
+.Button-Div a{
+    padding: 15px 20px;
+    text-decoration: none;
+    color: white;
+    font-size: 1.25rem;
+    background-color: rgb(4, 54, 15);
+    background-color: black;
+    border-radius: 8px;
+    text-transform: uppercase;
+    display: inline-block;
+}
+.categories{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.categories h1{
+    text-align: center;
+    margin: 10px 0;
+}
+.categories-content{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.catogory{
+    text-decoration: none;
+    margin: 10px;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Container-Icon{
+    background-color: white;
+    
+    width: 75px;
+    height: 75px;
+    border: 1px solid black;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Container-Icon i{
+    font-size: 2.5rem;
+    color: rgb(60, 111, 206);
+}
+
+.catogory .Container-Text{
+    color: black;
+    font-size: 1.25rem;
+}
+
+.catogory:hover p{
+    color: rgb(60, 111, 206);
+}
+.catogory:hover .Container-Icon{
+    background-color: rgba(163, 192, 247, 0.39);
+}
+
+
+
+/*NavBar Media*/
+@media (max-width: 1250px){
+    .Container-Links{
+        padding-right: 75px;
+    }
+    .Container-Logo{
+        padding-left: 75px;
+    }
+}
+@media (max-width: 1000px){
+    .Container-Links{
+        padding-right: 25px;
+    }
+    .Container-Logo{
+        padding-left: 25px;
+    }
+    .Container-Links a{
+        margin-left: 10px;
+    }
+}
+@media (max-width: 800px){
+    .Container-Logo{
+        height: 65px;
+    }
+    .Container-Links{
+        display: none;
+    }
+    .side-bar a{
+        display: block;
+    }
+    .side-bar{
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        right: -175px;
+        top: 0;
+        width: 175px;
+        height: 100vh;
+        background-color: white;
+        padding: 10px 10px;
+
+        transition: 0.5s;
+        display: inline-block;
+    }
+    .nav-bar .active{
+        right: 0;
+        top: 0;
+        transition: 0.5s;
+    }
+    .bars{
+        display: inline-block;
+        padding-right: 25px;
+        font-size: 2rem;
+        cursor: pointer;
+    }
+    .Container-exit{
+        position: relative;
+        
+    }
+    .exit{
+        font-size: 1.5rem;
+        position: absolute;
+        top: 0px;
+        right: 10px; 
+
+        padding: 10px;
+        background-color: black;
+        color: white;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+    .Container-links-side{
+        position: relative;
+        top: 60px;
+    }
+
+    .Container-links-side a{
+        text-decoration: none;
+        text-align: center;
+        padding: 5px 10px;
+        color: white;
+        background-color: rgb(255, 115, 0);
+        border-radius: 5px;
+        margin: 10px 0;
+    }
+}
+
+/*Rest of the page media*/
+
+
+@media (max-width: 1000px) {
+    .last-3-posts{
+        flex-direction: column;
+    }
+    .post{
+        width: 50vw;
+    }
+}
+@media (max-width: 800px) {
+    .posts-and-categories{
+        flex-direction: column;
+    }
+    .post{
+        width: 80vw;
+    }
+    .last-3-posts{
+        align-items: center;
+    }
+    .Descriere-Aplicatie-Text p{
+        font-size: 1.75rem;
+        letter-spacing: 0;
+    }
+}
+
+@media (max-width: 400px){
+    .categories-content{
+        grid-template-columns: 1fr 1fr;
+    }
+}

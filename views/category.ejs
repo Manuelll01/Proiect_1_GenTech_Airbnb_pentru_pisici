@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/category.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <!-- <div class="Container-Home">
+        <h1>Ai accesat categoria: <%= data.userQuery %></h1>
+        <a href="/AddPost">Add Post</a>
+    </div> -->
+    <div class="nav-bar">
+        
+      <a href="/" class="Container-Logo"><img src="img/CatCare.png" alt=""></a>
+
+      <div class="Container-Links">
+        <a href="/AddPost">Adauga un post</a>
+        <a href="/AddCategory">Adauga o categorie</a>
+      </div>
+
+
+      <div class="side-bar">
+        <div class="Container-exit"><i class="fa-solid fa-x exit"></i></div>
+        <div class="Container-links-side">
+          <a href="/AddPost">Adauga un post</a>
+          <a href="/AddCategory">Adauga o categorie</a>
+        </div>
+      </div>
+
+      <div class="bars"><i class="fa-solid fa-bars"></i></div>
+    </div>
+    <div class="all-posts">
+      <% data.posts.map(element => {%>
+        <div class="post">
+          <a href="/<%=data.uri%>/<%=element._id%>">
+            <img src="/<%=element.image%>" alt="a">
+            <div class="content">
+              <div>
+                <div class="fist-line">
+                  <p class="title"><%=element.title%></p>
+                  <p class="category">doua pisici/camera</p>
+                </div>
+                <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, praesentium. Quaerat, corrupti quam. Ex, aliquam corrupti odio quibusdam sed amet explicabo, dolores quod vel voluptatum totam eveniet error atque autem.</p>
+                <p class="adress">Adress: Str. chiriasului, Nr. 01</p>
+              </div>
+              <div class="flex-1">
+                <div>11/08/2023 - 11/09/2023</div>
+                <p>50 lei/Noapte</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      <%})%>
+    </div>
+    <div class="Container-Buttons">
+      <a id="edit-button" href="<%=data.uri%>/edit">Edit Category</a>
+      <a id="delete-button" href="/">Delete Category</a> <!-- de adaugat in client js event listener cu api de delete category din server js-->
+    </div>
+    <script src="/javascript/category.js"></script>
+    <!-- <script src="client.js"></script> -->
+</body>
+</html>

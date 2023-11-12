@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/addCategory.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <div class="Container-AddCategory">
+        <div class="Container-Mic-AddCategory">
+            <h1> Adauga o categorie!</h1>
+            <div class="Container-Text">
+                <p>Doriti sa creati un anunt pentru a va promova spatiul de gazduire pentru pisicute dar considerati ca nici una dintre categoriile existente nu va descriu spatiul de gazuire cu acuratete?  </p>
+                <p>In acest caz va invitam sa creati o categorie noua de postari. Tot ce trebuie sa faceti este sa adaugati un nume in campul de mai jos.</p>
+                <p>Dupa apasarea butonului Trimite veti gasi noua categorie la formularul de creare a unui post!</p>
+            </div>
+            <!-- <form method="POST" action="/AddCategory" id="form-add-category"> -->
+            <form id="form-add-category">
+                <input type="text" id="categoryName" name="categoryName" autocomplete="off" required>
+                <label for="categoryName"><i class="fa-solid fa-building-user"></i> Nume de categorie:</label>
+                
+                <button type="submit">Trimite</button>
+            </form>
+        </div>
+    </div>
+    <script src="/javascript/addCategory.js"></script>
+</body>
+</html>

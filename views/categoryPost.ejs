@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/categoryPost.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <div class="Post-Container-Home">
+        <div class="nav-bar">
+        
+            <a href="/" class="Container-Logo"><img src="/img/CatCare.png" alt=""></a>
+    
+            <div class="Container-Links">
+              <a href="/AddPost">Adauga un post</a>
+              <a href="/AddCategory">Adauga o categorie</a>
+            </div>
+    
+    
+            <div class="side-bar">
+              <div class="Container-exit"><i class="fa-solid fa-x exit"></i></div>
+              <div class="Container-links-side">
+                <a href="/AddPost">Adauga un post</a>
+                <a href="/AddCategory">Adauga o categorie</a>
+              </div>    
+            </div>
+    
+            <div class="bars"><i class="fa-solid fa-bars"></i></div>
+        </div>
+
+          <div class="Container-Main-Content">
+            <div class="Container-Image">
+                <img src="/<%=data.post.image%>" alt="">
+            </div>
+            <div class="Conainer-Content-And-SideBar">
+                
+                <div class="Container-Content">
+                    <div class="Container-Titlu">
+                        <p><%=data.post.title%></p>
+                    </div>
+                    
+                    <div class="Content">
+                        <h3>Despre Proprietate:</h3>
+                        <% data.post.aboutProperty.map(element => { %>
+                            <div><i class="fa-solid fa-star"></i><p><%=element%></p></div> 
+                        <%})%>
+                    </div>
+                    <div class="Content">
+                        <h3>Descriere:</h3>
+                        <div><i class="fa-solid fa-star"></i><p><%=data.post.Description%></p></div>
+                    </div>
+                    <div class="Content">
+                        <h3>Facilitati:</h3>
+                        <% data.post.facilities.map(element => { %>
+                            <div><i class="fa-solid fa-star"></i><p><%=element%></p></div>
+                        <%})%>
+                    </div>
+                    <div class="Content">
+                        <h3>Servcii extra (Contra cost):</h3>
+                       <% data.post.extraServices.map(element => { %>
+                            <div><i class="fa-solid fa-star"></i><p><%= element %></p></div>  
+                        <% }) %>
+                    </div>
+                    <div class="Content">
+                        <h3>Politica noastră:</h3>
+                        <% data.post.rules.map(element => { %>
+                            <div><i class="fa-solid fa-star"></i><p><%= element %></p></div>  
+                        <% }) %>
+                    </div>
+                    <div class="Content">
+                        <h3>Contact:</h3>
+                        <div><i class="fa-solid fa-phone"></i><%=data.post.phoneNumber%></div>
+                        <div><i class="fa-solid fa-envelope"></i><p><%=data.post.email%></p></div>
+                    </div>
+                    <div class="Comment-and-edit">
+                        <div class="send-comment">
+                            <div class="icon"><i class="fa-solid fa-comment"></i></div>
+                            <form id="addCommentForm">
+                                <div class="container-input">
+                                    <input type="text" id="commenterName" placeholder="Enter Name">
+                                </div>
+                                <div class="Enter-Comment">
+                                    <textarea id="commenterText" placeholder="Enter Comment"></textarea>
+                                </div>
+                                <button>Send comment</button>
+                            </form>
+                        </div>
+                        
+                    </div>
+                    
+
+                    
+                </div>
+
+                <div class="Container-SideBar">
+                    <div class="pret-si-rating">
+                        <div class="pret">
+                            <p> <%= data.post.pricePerRoom%> lei</p> / Noapte
+                        </div>
+                        <div class="rating">
+                            <i class="fa-solid fa-star"> 4,99</i>
+                            <p>26 de recenzii</p>
+                        </div>
+                    </div>
+                    <div class="start-and-end-date">
+                        <div class="start-date">
+                            <h4>Start date:</h4>
+                            <%const startDate = data.post.startDate%>
+                            <p><%= startDate.getDate() %>/<%= startDate.getMonth() + 1; %>/<%= startDate.getFullYear()%></p>
+                        </div>
+                        <div class="end-date">
+                            <h4>End date:</h4>
+                            <%const endDate = data.post.endDate%>
+                            <p><%= endDate.getDate() %>/<%= endDate.getMonth() + 1; %>/<%= endDate.getFullYear()%></p>
+                        </div>
+                    </div>
+                    <div class="Price-whole-accomodation">
+                        <p>Tariful pentru rezervarea completă a proprietății:</p>
+                        <div class="Whole-Price">
+                            <p> <%= data.post.priceWholePlace%> lei</p> / Noapte
+                        </div>
+                    </div>
+                    <div class="Check-in-and-out-hours">
+                        <div class="check-in-hour">
+                            <h4>Check in hour:</h4>
+                            <p>12pm</p>
+                        </div>
+                        <div class="check-out-hours">
+                            <h4>Check out hours:</h4>
+                            <p>10am-12am</p>
+                        </div>
+                    </div>
+                    <div class="Container-Buton">
+                        <a id="deleteButton" href="">Delete Post</a>
+                    </div>
+                    <div class="Edit-Button">
+                        <a href="/<%= uri %>/edit">Edit Post</a>
+                    </div>
+                </div>
+            </div>
+             <div class="Container-Comments">
+             <%data.post.comments.map(element => {%>
+                <div class="comment">
+                    <div class="Poza-Nume-Data">
+                        <div class="Poza">
+                            <img src="/img/face1.jpg" alt="">
+                        </div>
+                        <div class="Nume-Data">
+                            <div class="User-Name">
+                                <p><%=element.userName%></p>
+                            </div>
+                            <div class="Date">
+                                <p><%=element.date.getFullYear()%>/<%=element.date.getMonth() + 1%>/<%=element.date.getDate()%></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="Comment-Text">
+                        <p><%=element.content%></p>
+                    </div>
+                </div>
+              <%})%>
+          </div> 
+          
+    </div>
+    <script src="/javascript/categoryPost.js"></script>
+    <!-- <script src="client.js"></script>   -->
+</body>
+</html>

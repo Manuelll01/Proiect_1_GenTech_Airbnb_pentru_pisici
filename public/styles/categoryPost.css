@@ -1,0 +1,508 @@
+*, *::before, *::after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+/*NavBar*/
+.nav-bar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(255, 255, 255);
+    /* border-bottom: 1px solid rgb(255, 115, 0); */
+    /* border-bottom: 1px solid black; */
+    box-shadow: 0 0 5px 0 black;
+}
+
+.Container-Links{
+    padding-right: 125px;
+}
+
+.Container-Links a{
+    text-decoration: none;
+    color: white;
+    padding: 15px 25px;
+    background-color: rgb(255, 115, 0);
+    text-transform: uppercase;
+    font-weight: 600;
+    border-radius: 15px;
+    margin-left: 30px;
+}
+
+.side-bar{
+
+
+
+    z-index: 10;
+    display: none;
+}
+
+.bars{
+    display: none;
+}
+
+.Container-Logo{
+    display: inline-block;
+    padding-left: 125px;
+}
+
+.Container-Logo img{
+    display: block;
+    padding: 10px 10px 0px 0 ;
+    height: 100%;
+}
+
+/*Rest of the page*/
+
+.Post-Container-Home{
+    background-color: rgb(238, 237, 237);
+    min-height: 100vh;
+}
+
+.Container-Main-Content{
+    width: 1300px;
+    max-width: 85vw;
+    background-color: white;
+    margin: auto;
+    margin-top: 25px;
+    
+}
+.Container-Main-Content .Container-Image{
+    aspect-ratio: 5/2;
+    width: 100%;
+    overflow: hidden;
+    background: inherit;
+    
+    
+}
+.Container-Main-Content .Container-Image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.Conainer-Content-And-SideBar{
+    display: flex;
+    justify-content: space-between;
+}
+.Conainer-Content-And-SideBar{
+    padding: 0 15px;
+}
+
+.Container-Titlu{
+    margin-top: 10px;
+}
+
+.Container-Titlu p{
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+
+}
+
+.Container-Content{
+    flex-grow: 1;
+}
+
+.Content{
+    position: relative;
+    margin: 20px 0; /*temporar*/
+}
+
+.Content h3{
+    margin-bottom: 10px;
+}
+
+.Content div i{
+    margin: 0 15px 10px 0;
+    font-size: 1.25rem;
+}
+
+.Content div p{
+    display: inline;
+    line-height: 1.35rem;
+}
+
+.Content::after{
+    content: "";
+    position: absolute;
+    background-color: rgb(238, 237, 237);
+    width: 95%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+
+}
+
+.Container-SideBar{
+    margin-top: 10px;
+    min-width: 400px;
+    height: 450px;
+    border-radius: 10px;
+    box-shadow: 6px 7px 4px 8px rgb(216, 215, 215);
+    padding: 15px 25px;
+    position: sticky;
+    top: 20px;
+    
+}
+
+.Container-Buton{
+    
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 25px;
+}
+
+.Container-Buton a{
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: white;
+    background-color: rgb(9, 9, 71);
+    border-radius: 15px;
+}
+
+.Edit-Button{
+    position: relative;
+    top: 5px;
+    text-align: center;
+}
+.Edit-Button a{
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: white;
+    background-color: rgb(9, 9, 71);
+    border-radius: 15px;
+    display: inline-block;
+}
+
+.pret-si-rating{
+    display: flex;
+    justify-content: space-between;
+}
+
+.rating{
+    display: flex;
+    align-items: flex-end;
+}
+
+.rating i{
+    font-size: 1.5rem;
+    margin-right: 10px;
+}
+
+.pret p{
+    display: inline;
+    font-size: 1.75rem;
+    font-weight: 600;
+}
+.start-and-end-date{
+    margin-top: 20px;
+    padding: 10px 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.Price-whole-accomodation{
+    margin-top: 20px;
+    padding: 10px 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.Check-in-and-out-hours{
+    margin-top: 20px;
+    padding: 10px 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.Whole-Price{
+    margin-top: 5px;
+}
+.Whole-Price p{
+    display: inline;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.Container-Comments{
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 10px;
+    background-color: white;
+}
+.comment{
+    /* height: 200px; */
+    padding: 20px 10px;
+    border: 1px solid black;
+    border-radius: 20px;
+    overflow: hidden;
+    
+}
+
+.Poza-Nume-Data{
+    height: 40px;
+    display: flex;
+}
+
+.Poza{
+    height: 100%;
+    width: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 10px;
+}
+
+.Poza img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.Nume-Data{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.User-Name{
+    font-weight: 600;
+}
+
+.Date{
+    color: rgb(129, 128, 128);
+}
+
+.Comment-Text{ /* *chiar daca are un max height mare voi pune un constraint la numarul de caractere permis */
+    min-height: 100px;
+    max-height: 200px;
+    padding-top: 10px;
+}
+
+.Comment-and-edit{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 25px;
+}
+
+.send-comment{
+    display: flex;
+    flex-grow: 1;
+    margin-right: 20px;
+}
+
+.send-comment .icon{
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.send-comment .icon i{
+    font-size: 2.5rem;
+    padding: 15px;
+    color: white;
+    background-color: rgb(9, 9, 71);
+    border-radius: 50%;
+}
+
+.Comment-and-edit form{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.container-input{
+    position: relative;
+}
+
+.placeholder{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    pointer-events: none;
+}
+
+.container-input input:focus ~ span,
+.container-input textarea:focus ~ span{
+    display: none;
+}
+
+.container-input input:valid  ~ span,
+.container-input textarea:valid ~ span{
+    display: none;
+}
+
+
+
+.Comment-and-edit form input{
+    padding: 10px 20px;
+    margin-bottom: 15px;
+}
+
+.Comment-and-edit form textarea{
+    width: 100%;
+    height: 150px;
+    margin-bottom: 15px;
+    padding: 10px 20px;
+}
+.Comment-and-edit form button{
+    padding: 10px 20px;
+    color: white;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    background-color: rgb(9, 9, 71);
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+i.fa-star{
+    line-height: 10px;
+}
+.Content div{
+    margin-bottom: 8px;
+}
+
+/*NavBar Media*/
+@media (max-width: 1250px){
+    .Container-Links{
+        padding-right: 75px;
+    }
+    .Container-Logo{
+        padding-left: 75px;
+    }
+}
+@media (max-width: 1000px){
+    .Container-Links{
+        padding-right: 25px;
+    }
+    .Container-Logo{
+        padding-left: 25px;
+    }
+    .Container-Links a{
+        margin-left: 10px;
+    }
+}
+@media (max-width: 800px){
+    .Container-Logo{
+        height: 65px;
+    }
+    .Container-Links{
+        display: none;
+    }
+    .side-bar a{
+        display: block;
+    }
+    .side-bar{
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        right: -175px;
+        top: 0;
+        width: 175px;
+        height: 100vh;
+        background-color: white;
+        padding: 10px 10px;
+
+        transition: 0.5s;
+        display: inline-block;
+    }
+    .nav-bar .active{
+        right: 0;
+        top: 0;
+        transition: 0.5s;
+    }
+    .bars{
+        display: inline-block;
+        padding-right: 25px;
+        font-size: 2rem;
+        cursor: pointer;
+    }
+    .Container-exit{
+        position: relative;
+        
+    }
+    .exit{
+        font-size: 1.5rem;
+        position: absolute;
+        top: 0px;
+        right: 10px; 
+
+        padding: 10px;
+        background-color: black;
+        color: white;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+    .Container-links-side{
+        position: relative;
+        top: 60px;
+    }
+
+    .Container-links-side a{
+        text-decoration: none;
+        text-align: center;
+        padding: 5px 10px;
+        color: white;
+        background-color: rgb(255, 115, 0);
+        border-radius: 5px;
+        margin: 10px 0;
+    }
+}
+
+/*Media rest of the page*/
+@media(max-width: 1450px){
+    .Container-Comments{
+        grid-template-columns: 1fr;
+    }
+}
+@media(max-width: 1200px){
+    .Conainer-Content-And-SideBar{
+        flex-direction: column;
+    }
+    .Container-SideBar{
+        /* max-width: 600px; */
+        /* align-self: center; */
+        position: static;
+        top: 0;
+        margin-top: 20px;
+    }
+    .Comment-and-edit{
+        flex-direction: column;
+    }
+   
+}
+@media(max-width: 800px){
+    .Container-Main-Content .Container-Image{
+        aspect-ratio: 3/2;
+    }
+}
+@media(max-width: 500px){
+    .Container-Main-Content .Container-Image{
+        aspect-ratio: 1/1;
+    }
+    .Container-SideBar{
+        min-width: 250px;
+        height: 500px;
+    }
+    .rating{
+        flex-wrap: wrap;
+    }
+    .send-comment .icon{
+        display: none;
+    }
+    
+}
