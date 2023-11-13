@@ -12,4 +12,4 @@ Am adăugat, de asemenea, o secțiune de recenzii la fiecare post, cu un formula
 
 # Lucruri care ar trebui inbunatatite
 
-Din punctul meu de vedere aria care ar avea cel mai mult nevoie de inbunatatire este designul aplicatiei, cred ca arata ok, dar ar putea sa fie inbunatatit.
+Din punctul meu de vedere, aria care ar avea cel mai mult nevoie de îmbunătățire este designul aplicației. Cred că arată ok, dar ar putea fi îmbunătățit.
