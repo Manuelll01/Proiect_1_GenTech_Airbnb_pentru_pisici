@@ -131,7 +131,7 @@ adaugaLiniePoliticaNoastra.addEventListener('click', (e) => {
     // Create a new input field
     const input = document.createElement('input');
     input.type = 'text';
-    input.className = 'Politica_Noastra'; 
+    input.className = 'Politica-Noastra'; 
     input.name = 'rules[]';
     input.required = true;
     input.autocomplete = 'off';
@@ -158,92 +158,166 @@ adaugaLiniePoliticaNoastra.addEventListener('click', (e) => {
 })  
 
 
-const form = document.querySelector('#form-add-post')
+// const form = document.querySelector('#form-add-post')
 
-form.addEventListener('submit', async (e) => {
+// form.addEventListener('submit', async (e) => {
     
-    const type = document.querySelector('input[name="Type"]:checked').value
-    const title = document.querySelector('.Title').value
-    const pricePerRoom = document.querySelector('.Price').value
-    const priceWholePlace = document.querySelector('.Price-whole-place').value
-    const image = document.querySelector('.Image').value
-    const phoneNumber = document.querySelector('.Phone-Number').value
-    const email = document.querySelector('.Email').value
-    const startDate = document.querySelector('.StartDate').value
-    const endDate = document.querySelector('.EndDate').value
-    const checkInHour = document.querySelector('.check-in-hour').value
-    const checkOutHour = document.querySelector('.check-out-hour').value
-    const Description = document.querySelector('#Descriere').value
+//     const type = document.querySelector('input[name="Type"]:checked').value
+//     const title = document.querySelector('.Title').value
+//     const pricePerRoom = document.querySelector('.Price').value
+//     const priceWholePlace = document.querySelector('.Price-whole-place').value
+//     const image = document.querySelector('.Image').value
+//     const phoneNumber = document.querySelector('.Phone-Number').value
+//     const email = document.querySelector('.Email').value
+//     const startDate = document.querySelector('.StartDate').value
+//     const endDate = document.querySelector('.EndDate').value
+//     const checkInHour = document.querySelector('.check-in-hour').value
+//     const checkOutHour = document.querySelector('.check-out-hour').value
+//     const Description = document.querySelector('#Descriere').value
 
-    const aboutProperty = Array.from(document.querySelectorAll('.Despre_Proprietate')).map(input => input.value);
-    const facilities = Array.from(document.querySelectorAll('.Facilitati')).map(input => input.value);
-    const extraServices = Array.from(document.querySelectorAll('.Servicii_Extra')).map(input => input.value);
-    const rules = Array.from(document.querySelectorAll('.Politica-Noastra')).map(input => input.value);
+//     const aboutProperty = Array.from(document.querySelectorAll('.Despre_Proprietate')).map(input => input.value);
+//     const facilities = Array.from(document.querySelectorAll('.Facilitati')).map(input => input.value);
+//     const extraServices = Array.from(document.querySelectorAll('.Servicii_Extra')).map(input => input.value);
+//     const rules = Array.from(document.querySelectorAll('.Politica-Noastra')).map(input => input.value);
+
+//     try {
+//         e.preventDefault();
+
+//                 //First backend function (add Post)
+//         const response = await fetch('http://localhost:3000/AddPost', {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/json',
+//             },
+//             body: JSON.stringify({
+//                 type: type,
+//                 title: title,
+//                 pricePerRoom: pricePerRoom,
+//                 priceWholePlace: priceWholePlace,
+//                 image: image,
+//                 phoneNumber: phoneNumber,
+//                 email: email,
+//                 startDate: startDate,
+//                 endDate: endDate,
+//                 checkInHour: checkInHour,
+//                 checkOutHour: checkOutHour,
+//                 Description: Description,
+
+//                 aboutProperty: aboutProperty,
+//                 facilities: facilities,
+//                 extraServices: extraServices,
+//                 rules: rules
+//             }),
+//         });
+
+//         if (response.ok) {
+//             const result = await response.json();
+//             console.log(result);
+//             window.location.href = '/'
+//         } else {
+//             console.error('Add post error:', response.statusText);
+//         }
+
+
+//                 //Second backend function (Increment number of posts)
+//         const Type = document.querySelector('input[name="Type"]:checked').value;
+
+//         const response2 = await fetch('http://localhost:3000/IncrementNumber', {
+//             method: 'PATCH',
+//             headers: {
+//                 'Content-Type': 'application/json',
+//             },
+//             body: JSON.stringify({
+//                 Type: Type
+//             }),
+//         });
+
+        
+
+//         if (response2.ok) {
+//             const result = await response2.text();
+            
+            
+//             console.log(result);
+//         } else {
+//             console.error('Increment error:', response2.statusText);
+//         }
+
+//     } catch (error) {
+//         console.error('Add post general error:', error);
+//     }
+// })
+
+
+
+const formAddPost = document.querySelector('#form-add-post');
+
+formAddPost.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
     try {
-        e.preventDefault();
+        const formData = new FormData();
 
-                //First backend function (add Post)
+        formData.append('type', document.querySelector('input[name="Type"]:checked').value);
+        formData.append('title', document.querySelector('.Title').value);
+        formData.append('pricePerRoom', document.querySelector('.Price').value);
+        formData.append('priceWholePlace', document.querySelector('.Price-whole-place').value);
+
+        const imageInput = document.querySelector('.Image');
+        if (imageInput.files.length > 0) {
+            formData.append('image', imageInput.files[0]);
+        }
+
+        formData.append('phoneNumber', document.querySelector('.Phone-Number').value);
+        formData.append('email', document.querySelector('.Email').value);
+        formData.append('startDate', document.querySelector('.StartDate').value);
+        formData.append('endDate', document.querySelector('.EndDate').value);
+        formData.append('checkInHour', document.querySelector('.check-in-hour').value);
+        formData.append('checkOutHour', document.querySelector('.check-out-hour').value);
+        formData.append('Description', document.querySelector('#Descriere').value);
+
+        const aboutProperty = Array.from(document.querySelectorAll('.Despre_Proprietate')).map(input => input.value);
+        const facilities = Array.from(document.querySelectorAll('.Facilitati')).map(input => input.value);
+        const extraServices = Array.from(document.querySelectorAll('.Servicii_Extra')).map(input => input.value);
+        const rules = Array.from(document.querySelectorAll('.Politica-Noastra')).map(input => input.value);
+
+        formData.append('aboutProperty', JSON.stringify(aboutProperty));
+        formData.append('facilities', JSON.stringify(facilities));
+        formData.append('extraServices', JSON.stringify(extraServices));
+        formData.append('rules', JSON.stringify(rules));
+
         const response = await fetch('http://localhost:3000/AddPost', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                type: type,
-                title: title,
-                pricePerRoom: pricePerRoom,
-                priceWholePlace: priceWholePlace,
-                image: image,
-                phoneNumber: phoneNumber,
-                email: email,
-                startDate: startDate,
-                endDate: endDate,
-                checkInHour: checkInHour,
-                checkOutHour: checkOutHour,
-                Description: Description,
-
-                aboutProperty: aboutProperty,
-                facilities: facilities,
-                extraServices: extraServices,
-                rules: rules
-            }),
+            body: formData,
         });
 
         if (response.ok) {
             const result = await response.json();
             console.log(result);
-            window.location.href = '/'
+            window.location.href = '/';
         } else {
             console.error('Add post error:', response.statusText);
         }
 
-
-                //Second backend function (Increment number of posts)
+        // Increment number of posts
         const Type = document.querySelector('input[name="Type"]:checked').value;
-
         const response2 = await fetch('http://localhost:3000/IncrementNumber', {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                Type: Type
+                Type: Type,
             }),
         });
 
-        
-
         if (response2.ok) {
             const result = await response2.text();
-            
-            
             console.log(result);
         } else {
             console.error('Increment error:', response2.statusText);
         }
-
     } catch (error) {
         console.error('Add post general error:', error);
     }
-})
+});

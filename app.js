@@ -4,7 +4,7 @@ const path = require('path')
 const router = require('./routes/tasks')
 const bodyParser = require('body-parser')
 const multer = require('multer')
-
+const fileUpload = require("express-fileupload");
 const mongoose = require('mongoose')
 const { Categorie, Post } = require('./schemas');
 
@@ -20,7 +20,7 @@ app.use(cors({
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.use(fileUpload());
 const port = 3000;
 
 app.use(express.static('public'))
@@ -47,8 +47,6 @@ const upload = multer({storage: storage})
 //
 
   //mongoose
-// const categorie = new Categorie({name: "Out in the garden", numberOfPosts: 0})
-// categorie.save().then(() => console.log('Categorie salvata ' + categorie.name))
 
 
   //Templates with ejs 
@@ -123,9 +121,7 @@ app.get('/:category/:post', async (req, res) => {
  }
 
   // const currentUri = `${req.protocol}://${req.get('host')}${req.url}`.split('http://localhost:3000/')[1];
-  // res.render('categoryPost', {data: {userQuery: `categoria: ${category}, post: ${post}` }, uri: currentUri});
 })
-
 
 
   //Router

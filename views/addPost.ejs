@@ -54,8 +54,11 @@
                     <a href="" id="adauga-linie-Politica-Noastra">adauga inca o regula + </a>
                 </div>
                 <div for="Image">
-                    <p>Image url:</p>
-                    <input type="text" class="Image" name="image" autocomplete="off">
+                    <p>Image:</p>
+                    <span onclick="document.getElementById('fileInput').click();">
+                        Choose File
+                        <input type="file" class="Image" id="fileInput" name="image" ">
+                    </span>
                 </div>
                 <div for="Phone-Number">
                     <p>Phone number:</p>

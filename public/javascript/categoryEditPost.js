@@ -131,7 +131,7 @@ adaugaLiniePoliticaNoastra.addEventListener('click', (e) => {
     // Create a new input field
     const input = document.createElement('input');
     input.type = 'text';
-    input.className = 'Politica_Noastra'; 
+    input.className = 'Politica-Noastra'; 
     input.name = 'rules[]';
     input.required = true;
     input.autocomplete = 'off';
@@ -156,101 +156,32 @@ adaugaLiniePoliticaNoastra.addEventListener('click', (e) => {
     containerPoliticaNoastra.insertBefore(divContainer, existingAnchor);
 
 })  
-// const exitButtob = document.querySelector('.exit')
-// const sideBar = document.querySelector('.side-bar')
-// const bars = document.querySelector('.bars')
 
-// exitButtob.addEventListener('click', () => {
-//     sideBar.classList.remove("active");
-// })
-// bars.addEventListener('click', () => {
-//     sideBar.classList.add("active");
-// })
-
-
-// const editPost = document.querySelector('#editPost')
-// editPost.addEventListener('click', (e) => {
-//     window.location.href = '/'
-// })
-
-const formEditPost = document.querySelector('#form-edit-post')
-formEditPost.addEventListener('submit', async (e) => {
-    try {
-        const title = document.querySelector('.Title').value
-        const pricePerRoom = document.querySelector('.Price').value
-        const priceWholePlace = document.querySelector('.Price-whole-place').value
-        const image = document.querySelector('.Image').value
-        const phoneNumber = document.querySelector('.Phone-Number').value
-        const email = document.querySelector('.Email').value
-        const startDate = document.querySelector('.StartDate').value
-        const endDate = document.querySelector('.EndDate').value
-        const checkInHour = document.querySelector('.check-in-hour').value
-        const checkOutHour = document.querySelector('.check-out-hour').value
-        const Description = document.querySelector('#Descriere').value
-
-        const aboutProperty = Array.from(document.querySelectorAll('.Despre_Proprietate')).map(input => input.value);
-        const facilities = Array.from(document.querySelectorAll('.Facilitati')).map(input => input.value);
-        const extraServices = Array.from(document.querySelectorAll('.Servicii_Extra')).map(input => input.value);
-        const rules = Array.from(document.querySelectorAll('.Politica-Noastra')).map(input => input.value);
-        
-        const response = await fetch(`http://localhost:3000${window.location.pathname}`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                title: title,
-                pricePerRoom: pricePerRoom,
-                priceWholePlace: priceWholePlace,
-                image: image,
-                phoneNumber: phoneNumber,
-                email: email,
-                startDate: startDate,
-                endDate: endDate,
-                checkInHour: checkInHour,
-                checkOutHour: checkOutHour,
-                Description: Description,
-
-                aboutProperty: aboutProperty,
-                facilities: facilities,
-                extraServices: extraServices,
-                rules: rules
-            }),
-        });
-
-        if (response.ok) {
-            const result = await response.text();
-            
-            console.log(result);
-        } else {
-            console.error('Error:', response.statusText);
-        }
-    } catch (error) {
-        console.error('Fetch error:', error);
-    }
-})
-
-
-
+// const formEditPost = document.querySelector('#form-edit-post')
 // formEditPost.addEventListener('submit', async (e) => {
+//     e.preventDefault()
 //     try {
 //         const title = document.querySelector('.Title').value
-//         const pricePerRoom = document.querySelector('.pricePerRoom').value
-//         const priceWholePlace = document.querySelector('.priceWholePlace').value
-//         const image = document.querySelector('.image').value
-//         const phoneNumber = document.querySelector('.phoneNumber').value
-//         const email = document.querySelector('.email').value
-//         const endDate = document.querySelector('.endDate').value
-//         const startDate = document.querySelector('.startDate').value
-//         const checkInHour = document.querySelector('.checkInHour').value
-//         const checkOutHour = document.querySelector('.checkOutHour').value
-//         const Description = document.querySelector('.Description').value
+//         const pricePerRoom = document.querySelector('.Price').value
+//         const priceWholePlace = document.querySelector('.Price-whole-place').value
 
-//         const aboutProperty = document.querySelectorAll('.Despre_Proprietate').value
-//         const facilities = document.querySelectorAll('.Facilitati').value
-//         const extraServices = document.querySelectorAll('.Servicii_Extra').value
-//         const rules = document.querySelectorAll('.Politica-Noastra').value
+//         const imageInput = document.querySelector('.Image');
+//         const image = imageInput.files.length > 0 ? imageInput.files[0] : null;
+//         // const image = imageInput.files[0]
+        
+//         const phoneNumber = document.querySelector('.Phone-Number').value
+//         const email = document.querySelector('.Email').value
+//         const startDate = document.querySelector('.StartDate').value
+//         const endDate = document.querySelector('.EndDate').value
+//         const checkInHour = document.querySelector('.check-in-hour').value
+//         const checkOutHour = document.querySelector('.check-out-hour').value
+//         const Description = document.querySelector('#Descriere').value
 
+//         const aboutProperty = Array.from(document.querySelectorAll('.Despre_Proprietate')).map(input => input.value);
+//         const facilities = Array.from(document.querySelectorAll('.Facilitati')).map(input => input.value);
+//         const extraServices = Array.from(document.querySelectorAll('.Servicii_Extra')).map(input => input.value);
+//         const rules = Array.from(document.querySelectorAll('.Politica-Noastra')).map(input => input.value);
+        
 //         const response = await fetch(`http://localhost:3000${window.location.pathname}`, {
 //             method: 'PATCH',
 //             headers: {
@@ -263,22 +194,27 @@ formEditPost.addEventListener('submit', async (e) => {
 //                 image: image,
 //                 phoneNumber: phoneNumber,
 //                 email: email,
-//                 endDate: endDate,
 //                 startDate: startDate,
+//                 endDate: endDate,
 //                 checkInHour: checkInHour,
 //                 checkOutHour: checkOutHour,
 //                 Description: Description,
+
 //                 aboutProperty: aboutProperty,
 //                 facilities: facilities,
 //                 extraServices: extraServices,
 //                 rules: rules
 //             }),
 //         });
-        
+
 //         if (response.ok) {
-//             const result = await response.text();
-            
-//             console.log(result);
+//             const result = await response.json();
+
+//             const currentPath = window.location.pathname;
+//             const pathArray = currentPath.split("/");
+//             pathArray.pop();
+//             const modifiedPath = pathArray.join("/");
+//             window.location.href = modifiedPath
 //         } else {
 //             console.error('Error:', response.statusText);
 //         }
@@ -286,3 +222,61 @@ formEditPost.addEventListener('submit', async (e) => {
 //         console.error('Fetch error:', error);
 //     }
 // })
+
+
+
+
+const formEditPost = document.querySelector('#form-edit-post');
+formEditPost.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    try {
+        const formData = new FormData();
+        formData.append('title', document.querySelector('.Title').value);
+        formData.append('pricePerRoom', document.querySelector('.Price').value);
+        formData.append('priceWholePlace', document.querySelector('.Price-whole-place').value);
+
+        const imageInput = document.querySelector('.Image');
+        if (imageInput.files.length > 0) {
+            formData.append('image', imageInput.files[0]);
+        }
+
+        formData.append('phoneNumber', document.querySelector('.Phone-Number').value);
+        formData.append('email', document.querySelector('.Email').value);
+        formData.append('startDate', document.querySelector('.StartDate').value);
+        formData.append('endDate', document.querySelector('.EndDate').value);
+        formData.append('checkInHour', document.querySelector('.check-in-hour').value);
+        formData.append('checkOutHour', document.querySelector('.check-out-hour').value);
+        formData.append('Description', document.querySelector('#Descriere').value);
+
+        const aboutProperty = Array.from(document.querySelectorAll('.Despre_Proprietate')).map(input => input.value);
+        const facilities = Array.from(document.querySelectorAll('.Facilitati')).map(input => input.value);
+        const extraServices = Array.from(document.querySelectorAll('.Servicii_Extra')).map(input => input.value);
+        const rules = Array.from(document.querySelectorAll('.Politica-Noastra')).map(input => input.value);
+
+        formData.append('aboutProperty', JSON.stringify(aboutProperty));
+        formData.append('facilities', JSON.stringify(facilities));
+        formData.append('extraServices', JSON.stringify(extraServices));
+        formData.append('rules', JSON.stringify(rules));
+
+        const response = await fetch(`http://localhost:3000${window.location.pathname}`, {
+            method: 'PATCH',
+            body: formData,
+        });
+
+        if (response.ok) {
+            const result = await response.json();
+
+            const currentPath = window.location.pathname;
+            const pathArray = currentPath.split("/");
+            pathArray.pop();
+            const modifiedPath = pathArray.join("/");
+            window.location.href = modifiedPath;
+        } else {
+            console.error('Error:', response.statusText);
+        }
+    } catch (error) {
+        console.error('Fetch error:', error);
+    }
+});
+
+
