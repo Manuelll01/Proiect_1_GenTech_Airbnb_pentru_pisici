@@ -54,8 +54,8 @@ app.set('view engine', 'ejs');
 app.get('/', async (req, res) => {
   try {
     const categoriesData = await Categorie.find();
-    const last3Posts = await Post.find().sort({ Date: -1 }).limit(3) // Sort by Date field in descending order (most recent first).limit(3)
-    res.render('index', {data: {categories: categoriesData, posts: last3Posts}})
+    const last4Posts = await Post.find().sort({ Date: -1 }).limit(4) // Sort by Date field in descending order (most recent first).limit(3)
+    res.render('index', {data: {categories: categoriesData, posts: last4Posts}})
   } catch (error) {
     console.error('Error fetching data from MongoDB: ' + error);
     res.status(500).send('Internal Server Error');

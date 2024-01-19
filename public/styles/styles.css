@@ -152,12 +152,16 @@
 
 .posts-and-categories{
     display: flex;
-    margin-top: 30px;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 0 100px;
+    margin-top: calc(175px + 100px); /*175px ca sa "anulez" margin bottomul de la Hero Section*/
+    
 }
 
-.last-3-posts{
-    display: flex;
-    /* flex-wrap: wrap; */
+.last-4-posts{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 .post{
     width: 20vw;
@@ -184,7 +188,7 @@
     justify-content: space-between;
 
     padding: 5px;
-    min-height: 200px;
+    min-height: 175px;
 }
 
 .content .fist-line{
@@ -197,6 +201,9 @@
     font-size: 1.5rem;
     font-weight: 600;
     color: black;
+
+    max-height: 55px;
+    overflow: hidden;
 }
 
 
@@ -206,7 +213,7 @@
     line-height: 1.25rem;
 
     
-    max-height: 200px;
+    max-height: 140px;
     overflow: hidden;
 }
 
@@ -234,11 +241,14 @@
     display: inline-block;
 }
 .categories{
+    width: 665px; /*hardcode la widthul din hero pe stanga pentru simetrie*/
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
+    justify-content: center;
+    
 }
 .categories h1{
+    font-family: 'Montserrat', sans-serif;
     text-align: center;
     margin: 10px 0;
 }
@@ -383,23 +393,29 @@
 /*Rest of the page media*/
 
 
-@media (max-width: 1000px) {
-    .last-3-posts{
-        flex-direction: column;
-    }
-    .post{
-        width: 50vw;
+@media (max-width: 1500px) {
+    .posts-and-categories{
+        padding: 0 25px;
     }
 }
-@media (max-width: 800px) {
+@media (max-width: 1250px) {
     .posts-and-categories{
         flex-direction: column;
     }
-    .post{
-        width: 80vw;
+    .categories{
+        width: auto;
     }
-    .last-3-posts{
-        align-items: center;
+    .last-4-posts{
+        gap: 20px;
+    }
+    .post{
+        width: 100%;
+    }
+}
+@media (max-width: 800px) {
+    
+    .last-4-posts{
+        grid-template-columns: 1fr;
     }
 }
 

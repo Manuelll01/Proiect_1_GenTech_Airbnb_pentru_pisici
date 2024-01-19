@@ -67,7 +67,24 @@
       <!-- test hero nou fianl -->
 
       <div class="posts-and-categories">
-        <div class="last-3-posts">
+        <div class="categories">
+          <h1>Categorii</h1>
+          <div class="categories-content">
+            <% data.categories.forEach(result => { %>
+              <a class="catogory" href="<%= result.name %>">
+                 <div class="Container-Icon">
+                  <i class="fa-solid fa-house"></i>
+                 </div> 
+                 <div class="Container-Text">
+                  <p><%=  result.name %></p>
+                  <p><%= result.numberOfPosts %> posts</p>
+                 </div>
+              </a>  
+              <% }); %>
+              
+          </div>
+        </div>
+        <div class="last-4-posts">
          
           <%data.posts.map(element => {%>
             <div class="post">
@@ -92,23 +109,7 @@
           <%})%>
           
         </div>
-        <div class="categories">
-          <h1>Categorii</h1>
-          <div class="categories-content">
-            <% data.categories.forEach(result => { %>
-              <a class="catogory" href="<%= result.name %>">
-                 <div class="Container-Icon">
-                  <i class="fa-solid fa-house"></i>
-                 </div> 
-                 <div class="Container-Text">
-                  <p><%=  result.name %></p>
-                  <p><%= result.numberOfPosts %> posts</p>
-                 </div>
-              </a>  
-              <% }); %>
-              
-          </div>
-        </div>
+        
       </div>
 
     </div>
