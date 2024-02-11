@@ -3,7 +3,9 @@ const { Categorie, Post } = require('../schemas')
 const mongoose = require('mongoose')
 const MongoClient = require('mongodb').MongoClient;
 const db = mongoose.connection;
-
+const path = require("path")
+const multer = require('multer');
+const fileUpload = require("express-fileupload")
 
 const GetAllCategories = (req, res) => {
     return res.send('Toate categoriile')
@@ -82,53 +84,50 @@ const DeleteFromCategory = async (req, res) => {
     }
 }
 
-const EditPost = async (req, res) => { // Adagugarea unei categorii
+const EditPost =  async (req, res) => { 
     try {
-        // const {title, pricePerRoom, priceWholePlace, image, phoneNumber, email, startDate, endDate, checkInHour, checkOutHour, Description} = req.body
 
-        const title = req.body.title  
-        const pricePerRoom = req.body.pricePerRoom  
-        const priceWholePlace = req.body.priceWholePlace  
-        const image = req.body.image  
-        const phoneNumber = req.body.phoneNumber  
-        const email = req.body.email  
-        const startDate = req.body.startDate  
-        const endDate = req.body.endDate  
-        const checkInHour = req.body.checkInHour  
-        const checkOutHour = req.body.checkOutHour  
-        const Description = req.body.Description  
+        let fileName, file, uploadPath;
 
-        const aboutProperty = Array.isArray(req.body.aboutProperty) ? req.body.aboutProperty : [req.body.aboutProperty];
-        const facilities = Array.isArray(req.body.facilities) ? req.body.facilities : [req.body.facilities];
-        const extraServices = Array.isArray(req.body.extraServices) ? req.body.extraServices : [req.body.extraServices];
-        const rules = Array.isArray(req.body.rules) ? req.body.rules : [req.body.rules];
-        // const aboutProperty = Array.isArray(req.body['aboutProperty[]']) ? req.body['aboutProperty[]'] : [req.body['aboutProperty[]']];
-        // const facilities = Array.isArray(req.body['facilities[]']) ? req.body['facilities[]'] : [req.body['facilities[]']];
-        // const extraServices = Array.isArray(req.body['extraServices[]']) ? req.body['extraServices[]'] : [req.body['extraServices[]']];
-        // const rules = Array.isArray(req.body['rules[]']) ? req.body['rules[]'] : [req.body['rules[]']];
-        
-        // const title = req.body.title    
-        // const facilities = Array.isArray(req.body['facilities[]']) ? req.body['facilities[]'] : [req.body['facilities[]']];
+        // Check if an image was provided
+        if (req.files && req.files.image) {
+            fileName = Date.now() + "_" +  req.files.image.name;
+            file = req.files.image;
+            uploadPath = "C:\\Users\\negoi\\Desktop\\Vs code\\Copie_Airbnb_pentru_pisici\\public\\img\\" + fileName;
 
+            file.mv(uploadPath, (err) => {
+                if(err){
+                    return res.send(err);
+                }
+            });
+        }
+        const postUpdates = {
+            title: req.body.title,
+            pricePerRoom: req.body.pricePerRoom,
+            priceWholePlace: req.body.priceWholePlace,
+            image: 'img/' + fileName,
+            phoneNumber: req.body.phoneNumber,
+            email: req.body.email,
+            startDate: req.body.startDate,
+            endDate: req.body.endDate,
+            checkInHour: req.body.checkInHour,
+            checkOutHour: req.body.checkOutHour,
+            Description: req.body.Description,
+            aboutProperty: JSON.parse(Array.isArray(req.body.aboutProperty) ? req.body.aboutProperty : [req.body.aboutProperty]),
+            facilities: JSON.parse(Array.isArray(req.body.facilities) ? req.body.facilities : [req.body.facilities]),
+            extraServices: JSON.parse(Array.isArray(req.body.extraServices) ? req.body.extraServices : [req.body.extraServices]),
+            rules: JSON.parse(Array.isArray(req.body.rules) ? req.body.rules : [req.body.rules]),
+        };
+        Object.keys(postUpdates).forEach(key => (postUpdates[key] == null ||
+                                                 postUpdates[key] === "" ||
+                                                 postUpdates[key] === undefined ||
+                                                 postUpdates[key] === "img/undefined" || /*special pentru cazul in care nu adaug o imagine noua */
+                                                 (Array.isArray(postUpdates[key]) && postUpdates[key].length === 1 && postUpdates[key][0] === ""))
+                                                 && delete postUpdates[key]);
         const postId = req.params.post
-                const editedPost = await Post.findOneAndUpdate({_id: postId },
-                                                       { title: title, 
-                                                        pricePerRoom: pricePerRoom,
-                                                        priceWholePlace: priceWholePlace,
-                                                        image: image,
-                                                        phoneNumber: phoneNumber,
-                                                        email: email,
-                                                        startDate: startDate,
-                                                        endDate: endDate,
-                                                        checkInHour: checkInHour,
-                                                        checkOutHour: checkOutHour,
-                                                        Description: Description,
-                                                        aboutProperty: aboutProperty,
-                                                        facilities: facilities,
-                                                        extraServices: extraServices,
-                                                        rules: rules },
-                                                       { new: true });
-        console.log(`title:  + ${title}, pricePerRoom: ${pricePerRoom}, facilities: ${facilities} aboutProperty: ${aboutProperty}`)
+
+        const editedPost = await Post.findOneAndUpdate({_id: postId }, { $set: postUpdates }, { new: true });
+
         if(!editedPost){
             return res.status(404).json({ message: 'Post not found' });
         }
@@ -158,12 +157,23 @@ const DeletePost = async (req, res) => {
 }
 
 const AddPost = async (req, res) => { 
-    const {type, title, pricePerRoom, priceWholePlace, image, phoneNumber, email, startDate, endDate, checkInHour, checkOutHour, Description} = req.body
 
-    const aboutProperty = Array.isArray(req.body.aboutProperty) ? req.body.aboutProperty : [req.body.aboutProperty];
-    const facilities = Array.isArray(req.body.facilities) ? req.body.facilities : [req.body.facilities];
-    const extraServices = Array.isArray(req.body.extraServices) ? req.body.extraServices : [req.body.extraServices];
-    const rules = Array.isArray(req.body.rules) ? req.body.rules : [req.body.rules];
+    const fileName = Date.now() + "_" +  req.files.image.name;
+    const file = req.files.image
+    let uploadPath = "C:\\Users\\negoi\\Desktop\\Vs code\\Copie_Airbnb_pentru_pisici\\public\\img\\" + fileName;
+    file.mv(uploadPath, (err) => {
+      if(err){
+        return res.send(err)
+      }
+    })
+
+
+    const {type, title, pricePerRoom, priceWholePlace, phoneNumber, email, startDate, endDate, checkInHour, checkOutHour, Description} = req.body
+
+    const aboutProperty = JSON.parse(Array.isArray(req.body.aboutProperty) ? req.body.aboutProperty : [req.body.aboutProperty]);
+    const facilities = JSON.parse(Array.isArray(req.body.facilities) ? req.body.facilities : [req.body.facilities]);
+    const extraServices = JSON.parse(Array.isArray(req.body.extraServices) ? req.body.extraServices : [req.body.extraServices]);
+    const rules = JSON.parse(Array.isArray(req.body.rules) ? req.body.rules : [req.body.rules]);
     try {
 
        
@@ -176,7 +186,7 @@ const AddPost = async (req, res) => {
             facilities: facilities,
             extraServices: extraServices,
             rules: rules,
-            image: image,
+            image: 'img/' + fileName,
             phoneNumber: phoneNumber,
             email: email,
             startDate: startDate,
@@ -288,6 +298,8 @@ const GetAllPosts = (req, res) => {
         }
     })
 }
+
+
 
 
 module.exports = {

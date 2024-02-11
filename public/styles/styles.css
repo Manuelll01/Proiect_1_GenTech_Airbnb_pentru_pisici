@@ -15,24 +15,28 @@
 }
 
 .Container-Links{
-    padding-right: 125px;
+    padding-right: 100px;
 }
 
 .Container-Links a{
     text-decoration: none;
-    color: white;
-    padding: 15px 25px;
-    background-color: rgb(255, 115, 0);
+    /* color: white; */
+    color: black;
+    padding: 15px 10px;
+    /* background-color: rgb(255, 115, 0); */
     text-transform: uppercase;
     font-weight: 600;
-    border-radius: 15px;
-    margin-left: 30px;
+    border-radius: 5px;
+    margin-left: 15px;
+    transition: 0.125s;
+}
+.Container-Links a:hover{
+    background-color: rgb(255, 115, 0);
+    color: white;
+    transition: 0.25s;
 }
 
 .side-bar{
-
-
-
     z-index: 10;
     display: none;
 }
@@ -43,7 +47,7 @@
 
 .Container-Logo{
     display: inline-block;
-    padding-left: 125px;
+    padding-left: 100px;
 }
 
 .Container-Logo img{
@@ -57,45 +61,114 @@
     overflow: hidden;
 }
 
-.Descriere-Aplicatie{
+/*Test Hero nou*/
+
+
+.Container-Hero{
+    display: flex;
+    padding: 0 100px;
+    gap: 20px;
+    margin-top: 2rem;
+    margin-bottom: 175px;
+}
+
+.Container-Mare-Img{
+    display: flex;
+    gap: 15px;
+}
+
+.Container-Mic-Img{
+    display: grid;
+    grid-template-rows: 375px 375px;
+    gap: 15px;
+}
+.unu{
+    position: relative;
+    top: 50px;
+}
+.doi{
+    position: relative;
+    top: 175px;
+}
+
+.Container-Titlu{
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+    right: 150px;
+
+    font-size: clamp(2rem, 2.75vw, 3rem);
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.Container-Mic-Scris{
+    margin-top: 250px;
+    font-family: 'Playfair Display', serif;
+    
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding-bottom: 10px;
-    padding: 20px;
-    background: linear-gradient(rgba(18, 19, 112, 0.325), rgba(186, 182, 202, 0.5)), url(../img/cover1.jpg);
-    /* background: linear-gradient(rgba(42, 45, 49, 0.325), rgba(10, 1, 39, 0.5)), url(../img/poster1.jpg) no-repeat center center ;
-    background-size: cover; */
-    /* background-color: black; */
-
+    justify-content: center;
+    margin-left: 20px;
 }
 
-.Descriere-Aplicatie-Text{
-    /* color: white; */
-    
-    min-height: 200px; /*!!! de scos linia asta dupa ce termin !!!*/
+.Container-Mic-Scris p {
+    max-width: 800px;
+    font-size: 1.5rem;
+    font-style: italic;
+    color: #333; 
+    margin: 2rem 0;
 }
 
-.Descriere-Aplicatie-Text p{
-    font-size: 2.5rem;
-    letter-spacing: -2px;
-    font-weight: 800;
-    padding: 5px 0;
+.Container-Butoane{
+    display: flex;
+    gap: 20px;
+}
+
+.Container-Butoane a{
+    padding: 20px 10px;
+    border-radius: 5px;
     color: white;
+    background-color: rgb(255, 115, 0);
+
+    text-decoration: none;
 }
+
+
+
+
+.rect{ 
+    box-shadow: 5px 3px 2px 1px rgb(190, 188, 188);
+    height: 375px;
+    width: 325px;
+}
+.rect img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/*Test Hero nou final*/
+
 
 .posts-and-categories{
     display: flex;
-    margin-top: 30px;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 0 100px;
+    margin-top: calc(175px + 100px); /*175px ca sa "anulez" margin bottomul de la Hero Section*/
+    
 }
 
-.last-3-posts{
-    display: flex;
-    /* flex-wrap: wrap; */
+.last-4-posts{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 .post{
     width: 20vw;
     margin: 10px;
+    box-shadow: 2px 2px 2px 3px rgb(207, 205, 205);
+    overflow: hidden;
+    border-radius: 10px;
 }
 
 .post > a{
@@ -105,9 +178,9 @@
 
 .post img{
     width: 100%;
-    border-radius: 10px;
     aspect-ratio: 3/2;
     object-fit: cover;
+    
 }
 .content{
     display: flex;
@@ -115,7 +188,7 @@
     justify-content: space-between;
 
     padding: 5px;
-    min-height: 200px;
+    min-height: 175px;
 }
 
 .content .fist-line{
@@ -128,6 +201,9 @@
     font-size: 1.5rem;
     font-weight: 600;
     color: black;
+
+    max-height: 55px;
+    overflow: hidden;
 }
 
 
@@ -137,7 +213,7 @@
     line-height: 1.25rem;
 
     
-    max-height: 200px;
+    max-height: 140px;
     overflow: hidden;
 }
 
@@ -152,13 +228,7 @@
     margin-top: 10px;
 }
 
-.content .date{
-   
-}
 
-.Button-Div{
-    margin: 30px 0px;
-}
 .Button-Div a{
     padding: 15px 20px;
     text-decoration: none;
@@ -171,11 +241,14 @@
     display: inline-block;
 }
 .categories{
+    width: 665px; /*hardcode la widthul din hero pe stanga pentru simetrie*/
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
+    justify-content: center;
+    
 }
 .categories h1{
+    font-family: 'Montserrat', sans-serif;
     text-align: center;
     margin: 10px 0;
 }
@@ -259,12 +332,12 @@
         display: flex;
         flex-direction: column;
         position: fixed;
-        right: -175px;
+        right: -225px;
         top: 0;
-        width: 175px;
+        width: 225px;
         height: 100vh;
         background-color: white;
-        padding: 10px 10px;
+        box-shadow: 1px 2px 1px 2px rgba(235, 232, 232, 0.644);
 
         transition: 0.5s;
         display: inline-block;
@@ -285,12 +358,14 @@
         
     }
     .exit{
+        height: 40px;
+        width: 40px;
         font-size: 1.5rem;
         position: absolute;
-        top: 0px;
-        right: 10px; 
+        top: 15px;
+        right: 20px; 
 
-        padding: 10px;
+        padding: 8px 11px;
         background-color: black;
         color: white;
         border-radius: 50%;
@@ -298,44 +373,49 @@
     }
     .Container-links-side{
         position: relative;
-        top: 60px;
+        top: 80px;
     }
 
     .Container-links-side a{
         text-decoration: none;
         text-align: center;
         padding: 5px 10px;
-        color: white;
+        color: black;
+        padding: 20px;
+        font-size: 1.25rem;
+    }
+    .Container-links-side a:hover{
         background-color: rgb(255, 115, 0);
-        border-radius: 5px;
-        margin: 10px 0;
+        color: white;
     }
 }
 
 /*Rest of the page media*/
 
 
-@media (max-width: 1000px) {
-    .last-3-posts{
-        flex-direction: column;
-    }
-    .post{
-        width: 50vw;
+@media (max-width: 1500px) {
+    .posts-and-categories{
+        padding: 0 25px;
     }
 }
-@media (max-width: 800px) {
+@media (max-width: 1250px) {
     .posts-and-categories{
         flex-direction: column;
     }
+    .categories{
+        width: auto;
+    }
+    .last-4-posts{
+        gap: 20px;
+    }
     .post{
-        width: 80vw;
+        width: 100%;
     }
-    .last-3-posts{
-        align-items: center;
-    }
-    .Descriere-Aplicatie-Text p{
-        font-size: 1.75rem;
-        letter-spacing: 0;
+}
+@media (max-width: 800px) {
+    
+    .last-4-posts{
+        grid-template-columns: 1fr;
     }
 }
 
@@ -344,3 +424,79 @@
         grid-template-columns: 1fr 1fr;
     }
 }
+
+
+/*Test hero nou media*/
+
+@media(max-width:1500px){
+    .Container-Hero{
+        padding: 0 25px;
+    }
+}
+@media(max-width:1250px){
+    .Container-Hero{
+        flex-direction: column;
+        margin-bottom: 25px;
+    }
+    .unu{
+        top: 0px;
+    }
+    .doi{
+        position: relative;
+        top: 125px;
+    }
+    .Container-Mare-Img{
+        justify-content: center;
+    }
+    .Container-Mic-Img{
+        display: grid;
+        grid-template-rows: 300px 300px;
+        gap: 15px;
+    }
+    .Container-Mare-Scris{
+        margin-top: 125px;
+    }
+    .Container-Titlu{
+        display: none;
+    }
+    .Container-Mic-Scris{
+        margin-top: 0;
+    }
+    .Container-Mic-Scris p{
+        max-width: none;
+        text-align: center;
+    }
+    .Container-Butoane{
+        justify-content: center;
+    }
+
+
+
+
+    .rect{ /*img simulator*/
+        box-shadow: 5px 3px 2px 1px rgb(190, 188, 188);
+        height: 300px;
+        width: 400px;
+    }
+}
+@media(max-width:850px){
+    .Container-Mic-Img{
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        gap: 15px;
+    }
+    .doi{
+        top: 10vw;
+    }
+    .Container-Mare-Scris{
+        margin-top: 10vw;
+    }
+
+    .rect{ /*img simulator*/
+        box-shadow: 5px 3px 2px 1px rgb(190, 188, 188);
+        height: 35vw;
+        max-width: 45vw;
+    }
+}
+
+/*Test hero nou media*/
